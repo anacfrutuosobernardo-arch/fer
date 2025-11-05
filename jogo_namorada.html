@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joguinho 💕</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+    .card { max-width: 320px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 12px; }
+    button { margin-top: 10px; padding: 10px 20px; border-radius: 8px; cursor: pointer; border: none; }
+    .yes { background: pink; }
+    .no { background: #ccc; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Joguinho do Amor 💘</h2>
+    <p id="pergunta">Pronta pra jogar, meu amor? 💕</p>
+    <div id="botoes">
+      <button onclick="comecar()">Começar</button>
+    </div>
+  </div>
+<script>
+const perguntas = [
+  { q: "Dia 14 você está aqui? 📅", a: "Então já vou me arrumar 😌" },
+  { q: "Você ainda quer passar o ano novo comigo? 🎆", a: "Vai ser perfeito ✨" },
+  { q: "E 2026? 🗓️", a: "Agenda trancada pra nós 😍" },
+  { q: "E mais tempo? ♾️", a: "Pra sempre então 💖" },
+  { q: "Quantos dedos você tem na mão direita? 🤔✋", a: "Boa! 5 mesmo 😂" },
+  { q: "Nós podemos parar de ser solteiras? 💍", a: "Agora somos oficialmente nossas 😘" },
+];
+let idx = 0;
+function comecar(){
+  mostrarPergunta();
+}
+function mostrarPergunta(){
+  if(idx >= perguntas.length){
+    document.getElementById("pergunta").innerText = "Te amo! 💖";
+    document.getElementById("botoes").innerHTML = "<p>Obrigada por jogar, minha princesa 💕</p>";
+    return;
+  }
+  document.getElementById("pergunta").innerText = perguntas[idx].q;
+  document.getElementById("botoes").innerHTML = `
+    <button class="yes" onclick="responder(true)">Sim 💕</button>
+    <button class="no" onclick="responder(false)">Não 🙃</button>
+  `;
+}
+function responder(sim){
+  if(!sim){ alert("Resposta errada 😂 tente de novo"); return; }
+  alert(perguntas[idx].a);
+  idx++;
+  mostrarPergunta();
+}
+</script>
+</body>
+</html>
